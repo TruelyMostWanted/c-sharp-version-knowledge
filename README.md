@@ -1,7 +1,7 @@
 # C# Language Reference for Agents
 
-Compact notes on C# language features, one file per feature, each checked against its source.
-Purpose: a coding agent can see which language features the project's C# version allows
+A reference book on C# language features, one chapter (file) per feature, each checked against its source.
+Purpose: a coding agent (or a human) can see which language features the project's C# version allows
 and how to use them correctly, without guessing from training data or decompiling assemblies.
 
 - Covers C# 10 (.NET 6) to C# 15 (.NET 11). C# 9 and earlier: baseline table in [MODERNIZE.md](MODERNIZE.md).
@@ -11,7 +11,29 @@ and how to use them correctly, without guessing from training data or decompilin
 ## Files
 - `README.md`: this file. Version ceiling and feature index.
 - [`MODERNIZE.md`](MODERNIZE.md): procedure for "as modern as possible", walking the versions old to new, plus defaults for new code.
-- `<version>/<feature>.md`: one file per feature (frontmatter: version, TFM, status, tags, source, `modernizes`).
+- [`TEMPLATE.md`](TEMPLATE.md): the chapter structure every feature file follows.
+- `<version>/<feature>.md`: one chapter per feature (frontmatter: version, TFM, status, tags, source, `modernizes`).
+
+### How a chapter is organized
+
+Every feature file has the same sections, so you can jump straight to what you need:
+
+| Section | Content |
+|---|---|
+| Abstract + fact table | What it is, version, status, runtime needs, audience, modernize category. **Read this first.** |
+| 1. Motivation | The problem before the feature |
+| 2. The feature explained | Syntax, semantics and rules |
+| 3. Code examples | Minimal example, extended (general and game/Godot) examples |
+| 4. Before this feature | The older idiom side by side |
+| 5. Under the hood | Lowered C# / IL sketch |
+| 6. Performance and allocation | Runtime cost, boxing, allocations |
+| 7. Pitfalls | Compiles but behaves unexpectedly |
+| 8. Concerns and limitations | API compatibility, tooling, serialization, Godot boundary |
+| 9. When to use | Use when / avoid when / good versus bad |
+| 10. Related features | Links to other chapters |
+| 11. References | Official documentation and proposals |
+
+Pointer chapters (C# 10 preview features, `field` in C# 13) use a short form described in [`TEMPLATE.md`](TEMPLATE.md).
 
 ---
 
@@ -42,6 +64,8 @@ and how to use them correctly, without guessing from training data or decompilin
 ## Step 2: Open only what you need
 
 Use the index below. Open single feature files on demand; do not load whole folders.
+Within a file, the abstract and fact table usually suffice; read further sections only as needed
+(for example "7. Pitfalls" before using a feature, "4. Before this feature" when modernizing).
 When a newer feature fits the code you are writing, prefer it over the older idiom, but
 never rewrite working code just to use a newer feature unless asked.
 

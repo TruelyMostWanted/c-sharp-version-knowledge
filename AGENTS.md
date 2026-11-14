@@ -8,6 +8,7 @@ Guide for AI agents (and humans) using or changing this repository.
 - Always start with [`README.md`](README.md), step 1: determine the C# version the project allows (`.csproj`, `LangVersion`, `TargetFramework`). Never use a feature above that ceiling.
 - To modernize code, follow [`MODERNIZE.md`](MODERNIZE.md).
 - Read only the feature files you need (`<version>/<feature>.md`); the frontmatter (`version`, `status`, `tags`, `modernizes`) tells you whether a file is relevant before reading it.
+- Each file is a chapter with fixed sections ([`TEMPLATE.md`](TEMPLATE.md)). Start with the abstract and fact table; open further sections only when needed.
 - If a file and the official documentation on learn.microsoft.com disagree, the documentation wins.
 
 ## As upstream
@@ -20,6 +21,9 @@ downstream repositories pull with `git subtree pull --prefix=.agents/knowledge/c
 ## Changing it
 
 - One feature per file, with frontmatter and a `source` link to the official documentation.
+- Follow the chapter structure in [`TEMPLATE.md`](TEMPLATE.md): same sections in the same order; a section that does not apply says so in one sentence.
+- Code examples must compile on the chapter's C# version (no newer features in older chapters).
+- Do not invent compiler output: show lowered C# sketches, and IL only where it is certain.
 - New C# version: new folder `<version>/`, a row in the README table, entries in `MODERNIZE.md`.
-- Keep files short: rules, a minimal example, pitfalls. No project-specific content.
+- No project-specific content; Godot notes only where the engine boundary matters.
 - Commits in English.
